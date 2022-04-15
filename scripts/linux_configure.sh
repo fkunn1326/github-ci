@@ -20,7 +20,7 @@ chmod 0600 $HOME/.vnc/passwd
 
 # Add novnc
 git clone https://github.com/novnc/noVNC.git
-./noVNC/utils/launch.sh --vnc 192.168.1.10:7582
+./noVNC/utils/launch.sh --vnc 127.0.0.1:7582 --listen 80
 
 # Fifth and last, set up auth token from argument
 ./ngrok authtoken $NGROK_AUTH_TOKEN
