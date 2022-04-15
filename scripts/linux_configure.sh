@@ -18,6 +18,10 @@ cp ./resources/xstartup $HOME/.vnc/xstartup.turbovnc
 echo $VNC_USER_PASSWORD | vncpasswd -f > $HOME/.vnc/passwd
 chmod 0600 $HOME/.vnc/passwd
 
+# Add novnc
+git clone https://github.com/novnc/noVNC.git
+./noVNC/utils/launch.sh --vnc 192.168.1.10:7582
+
 # Fifth and last, set up auth token from argument
 ./ngrok authtoken $NGROK_AUTH_TOKEN
 exit
