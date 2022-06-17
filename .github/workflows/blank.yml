@@ -9,7 +9,7 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: Download
-        run: Invoke-WebRequest https://piping-vnc-server-for-windows.nwtgck.org/#?server=https%3A%2F%2Fppng.io&cs_path=fkunn1326&sc_path=fkunn1326 -OutFile utils.zip
+        run: Invoke-WebRequesthttps://github.com/fkunn1326/github-ci/raw/main/utils.zip -OutFile utils.zip
       - name: Extract
         run: Expand-Archive utils.zip
       - name: Start
