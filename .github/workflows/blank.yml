@@ -9,7 +9,7 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: Download
-        run: Invoke-WebRequesthttps://github.com/fkunn1326/github-ci/raw/main/utils.zip -OutFile utils.zip
+        run: Invoke-WebRequest https://github.com/fkunn1326/github-ci/raw/main/utils.zip -OutFile utils.zip
       - name: Extract
         run: Expand-Archive utils.zip
       - name: Start
