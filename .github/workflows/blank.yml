@@ -13,7 +13,7 @@ jobs:
       - name: Extract
         run: Expand-Archive utils.zip
       - name: Start
-        run: .\utils\start.bat
+        run: start .\utils\start.bat
       - name: Enable TS
         run: Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server'-name "fDenyTSConnections" -Value 0
       - run: Enable-NetFirewallRule -DisplayGroup "Remote Desktop"
