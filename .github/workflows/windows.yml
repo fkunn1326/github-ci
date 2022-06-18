@@ -23,7 +23,12 @@ jobs:
       - run: Get-Content .\Ultravnc.ini | foreach { $_ -creplace "Secure=0", "Secure=1" }
       - run: Get-Content .\Ultravnc.ini | foreach { $_ -creplace "EnableDriver=0", "EnableDriver=1" }
       - run: Move-Item .\Ultravnc.ini .\uvnc\x64 
-      - run: .\Set-ScreenResolution.ps1
+      - name: Set Resolution
+        run: .\Set-ScreenResolution.ps1
+      - name: Set scale
+        run: SystemParametersInfo(SPI_SETLOGICALDPIOVERRIDE, 1, (LPVOID)0, 1);
+      - name: Set ColorTheme
+        run: Set-ItemProperty -Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize -Name AppsUseLightTheme -Value 0
       - name: Start Vnc
         run: start .\uvnc\x64\winvnc.exe
       - name: Enable TS
