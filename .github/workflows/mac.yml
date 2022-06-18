@@ -15,7 +15,7 @@ jobs:
         VNC_USER_PASSWORD: ${{ secrets.VNC_USER_PASSWORD }}
         VNC_PASSWORD: ${{ secrets.VNC_PASSWORD }}
       run: source configure.sh "$VNC_USER_PASSWORD" "$VNC_PASSWORD"
-    - name: ngrok is now listening to VNC connections on...
+    - name: VNC connections on...
       run: echo Server listening on https://piping-vnc.nwtgck.org/vnc.html#?server=https%3A%2F%2Fppng.io&cs_path=fkd13628&sc_path=fkd13628
     - name: Setup tmate session
       uses: mxschmitt/action-tmate@v2
