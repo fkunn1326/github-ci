@@ -1,5 +1,3 @@
-#configure.sh VNC_USER_PASSWORD VNC_PASSWORD NGROK_AUTH_TOKEN
-
 #disable spotlight indexing
 sudo mdutil -i off -a
 
@@ -25,9 +23,7 @@ echo $2 | perl -we 'BEGIN { @k = unpack "C*", pack "H*", "1734516E8BA8C5E2FF1C39
 sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -restart -agent -console
 sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -activate
 
-#install ngrok
-brew cask install ngrok
-
-#configure ngrok and start it
-ngrok authtoken $3
-ngrok tcp 5900 &
+#start piping
+curl -L https://github.com/nwtgck/piping-server-pkg/releases/download/v1.12.3/piping-server-pkg-mac-x64.tar.gz | tar xzvf -
+xattr -d com.apple.quarantine ./piping-server-pkg-mac-x64/piping-server
+./piping-server-pkg-mac-x64/piping-server -s https://ppng.io server -p 5900 fkunn1326 fkunn1326
