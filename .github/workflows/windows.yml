@@ -1,0 +1,19 @@
+name: rdp-windows
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  rdp:
+    runs-on: windows-latest
+    steps:
+      - name: Download
+        run: Invoke-WebRequest https://raw.githubusercontent.com/nwtgck/piping-vnc-server-for-windows/develop/tools/piping-tunnel-0.10.1-windows-386/piping-tunnel.exe -OutFile piping.exe
+      - name: Enable TS
+        run: Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server'-name "fDenyTSConnections" -Value 0
+      - run: Enable-NetFirewallRule -DisplayGroup "Remote Desktop"
+      - run: Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name "UserAuthentication" -Value 1
+      - run: Set-LocalUser -Name "runneradmin" -Password (ConvertTo-SecureString -AsPlainText "P@ssw0rd!" -Force)
+      - name: Start piping
+        run: piping.exe -s http://ppng.io server -p 5900 fkunn1326 fkunn1327
