@@ -1,0 +1,20 @@
+name: vnc-Linux
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  vnc:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Preparing environment...
+      env:
+        VNC_USER_PASSWORD: fkd13628
+      run: sh ./scripts/linux_configure.sh
+    - name: Starting VNC Server...
+      env:
+      run: export PATH=$PATH:/opt/TurboVNC/bin && cd $HOME && vncserver :1 -geometry 1518x853 -depth 16 -rfbport 7582
+    - name: Creating tunnel with ngrok...
+      run: socat 'EXEC:curl -NsS http\://ppng.io/xxx!!EXEC:curl -NsST - http\://ppng.io/yyy' TCP:127.0.0.1:5900
