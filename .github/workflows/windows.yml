@@ -23,4 +23,4 @@ jobs:
       - run: Set-LocalUser -Name "runneradmin" -Password (ConvertTo-SecureString -AsPlainText "P@ssw0rd!" -Force)
       - run: Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled False
       - name: Start piping
-        run: ./piping.exe -s http://ppng.io server -p 5900 fkunn1326 fkunn1327
+        run: ./piping.exe server -p 5900 aaa bbb
