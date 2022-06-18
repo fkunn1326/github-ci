@@ -12,8 +12,12 @@ jobs:
         run: Invoke-WebRequest https://raw.githubusercontent.com/nwtgck/piping-vnc-server-for-windows/develop/tools/piping-tunnel-0.10.1-windows-386/piping-tunnel.exe -OutFile piping.exe
       - name: Download uvnc
         run: Invoke-WebRequest https://uvnc.com/component/jdownloads/send/0-/430-ultravnc-1-3-81-bin-zip -OutFile uvnc.zip
+      - name: Download uvnc config
+        run: Invoke-WebRequest https://raw.githubusercontent.com/nwtgck/piping-vnc-server-for-windows/develop/tools/UltraVnc_1342/x64/UltraVNC.ini -OutFile UltraVNC.ini
       - name: Expand uvnc
         run:  Expand-Archive uvnc.zip
+      - name: Set uvnc pswd
+        run: Get-Content .\Ultravnc.ini | foreach { $_ -creplace "Secure=0", "Secure=1" }; Get-Content .Ultravnc.ini | foreach { $_ -creplace "passwd=", "passwd=fkd13628" }; Get-Content .Ultravnc.ini | foreach { $_ -creplace "passwd2=", "passwd2=fkd13628" }; Move-Item .\Ultravnc.ini .\uvnc\x64 
       - name: Start Vnc
         run: start .\uvnc\x64\winvnc.exe
       - name: Enable TS
