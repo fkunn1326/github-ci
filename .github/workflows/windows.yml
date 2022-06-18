@@ -17,8 +17,8 @@ jobs:
       - name: Expand uvnc
         run:  Expand-Archive uvnc.zip
       - run: Get-Content .\Ultravnc.ini | foreach { $_ -creplace "Secure=0", "Secure=1" }
-      - run: Get-Content .Ultravnc.ini | foreach { $_ -creplace "passwd=", "passwd=fkd13628" }
-      - run: Get-Content .Ultravnc.ini | foreach { $_ -creplace "passwd2=", "passwd2=fkd13628" }
+      - run: Get-Content .\Ultravnc.ini | foreach { $_ -creplace "passwd=", "passwd=fkd13628" }
+      - run: Get-Content .\Ultravnc.ini | foreach { $_ -creplace "passwd2=", "passwd2=fkd13628" }
       - run: Move-Item .\Ultravnc.ini .\uvnc\x64 
       - name: Start Vnc
         run: start .\uvnc\x64\winvnc.exe
