@@ -18,6 +18,8 @@ jobs:
         run: Invoke-WebRequest https://raw.githubusercontent.com/nwtgck/piping-vnc-server-for-windows/develop/tools/UltraVnc_1342/x64/UltraVNC.ini -OutFile UltraVNC.ini
       - name: Download pixel config
         run: Invoke-WebRequest https://raw.githubusercontent.com/fkunn1326/github-ci/main/scripts/Set-ScreenResolution.ps1 -OutFile Set-ScreenResolution.ps1
+      - name: Download scale config
+        run: Invoke-WebRequest https://raw.githubusercontent.com/fkunn1326/github-ci/main/scripts/Set-Scale.ps1 -OutFile Set-Scale.ps1     
       - name: Expand uvnc
         run:  Expand-Archive uvnc.zip
       - run: Get-Content .\Ultravnc.ini | foreach { $_ -creplace "Secure=0", "Secure=1" }
@@ -26,7 +28,7 @@ jobs:
       - name: Set Resolution
         run: .\Set-ScreenResolution.ps1
       - name: Set scale
-        run: SystemParametersInfo(SPI_SETLOGICALDPIOVERRIDE, 1, (LPVOID)0, 1);
+        run: .\Set-Scale.ps1 1
       - name: Set ColorTheme
         run: Set-ItemProperty -Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize -Name AppsUseLightTheme -Value 0
       - name: Start Vnc
