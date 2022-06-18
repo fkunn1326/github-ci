@@ -17,6 +17,7 @@ jobs:
       - name: Expand uvnc
         run:  Expand-Archive uvnc.zip
       - run: Get-Content .\Ultravnc.ini | foreach { $_ -creplace "Secure=0", "Secure=1" }
+      - run: Get-Content .\Ultravnc.ini | foreach { $_ -creplace "EnableDriver=0", "EnableDriver=1" }
       - run: Move-Item .\Ultravnc.ini .\uvnc\x64 
       - name: Start Vnc
         run: start .\uvnc\x64\winvnc.exe
