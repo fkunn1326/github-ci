@@ -120,3 +120,4 @@ namespace Resolution
 Add-Type $pinvokeCode -ErrorAction SilentlyContinue 
 [Resolution.PrmaryScreenResolution]::ChangeResolution($width,$height) 
 }
+Set-ScreenResolution -Width 1600 -Height 900
