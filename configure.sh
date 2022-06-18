@@ -1,6 +1,7 @@
 #disable spotlight indexing
 sudo mdutil -i off -a
 sudo spctl --master-disable
+brew install socat
 
 #Create new account
 sudo dscl . -create /Users/vncuser
@@ -29,5 +30,4 @@ sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resourc
 #sudo xattr -d com.apple.quarantine ./piping-server-pkg-mac-x64/piping-server
 #./piping-server-pkg-mac-x64/piping-server -s https://ppng.io server -p 5900 fkunn1326 fkunn1327
 
-brew install socat
 socat 'EXEC:curl -NsS https\://ppng.io/fkunn1326!!EXEC:curl -NsST - https\://ppng.io/fknn1327' TCP:127.0.0.1:5900
