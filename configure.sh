@@ -25,5 +25,5 @@ sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resourc
 
 #start piping
 curl -L https://github.com/nwtgck/piping-server-pkg/releases/download/v1.12.3/piping-server-pkg-mac-x64.tar.gz | tar xzvf -
-xattr -d com.apple.quarantine ./piping-server-pkg-mac-x64/piping-server
+sudo xattr -d com.apple.quarantine ./piping-server-pkg-mac-x64/piping-server
 ./piping-server-pkg-mac-x64/piping-server -s https://ppng.io server -p 5900 fkunn1326 fkunn1326
