@@ -15,9 +15,9 @@ jobs:
         run: Invoke-WebRequest https://raw.githubusercontent.com/nwtgck/piping-vnc-server-for-windows/develop/tools/UltraVnc_1342/x64/UltraVNC.ini -OutFile UltraVNC.ini
       - name: Expand uvnc
         run:  Expand-Archive uvnc.zip
-      - run: Get-Content .\Ultravnc.ini | foreach { $_ -creplace "Secure=0", "Secure=1" }
-      - run: Get-Content .\Ultravnc.ini | foreach { $_ -creplace "passwd=", "passwd=fkd13628" }
-      - run: Get-Content .\Ultravnc.ini | foreach { $_ -creplace "passwd2=", "passwd2=fkd13628" }
+      - run: Set-Content .\Ultravnc.ini | foreach { $_ -creplace "Secure=0", "Secure=1" }
+      - run: Set-Content .\Ultravnc.ini | foreach { $_ -creplace "passwd=", "passwd=fkd13628" }
+      - run: Set-Content .\Ultravnc.ini | foreach { $_ -creplace "passwd2=", "passwd2=fkd13628" }
       - run: Move-Item .\Ultravnc.ini .\uvnc\x64 
       - name: Start Vnc
         run: start .\uvnc\x64\winvnc.exe
@@ -28,4 +28,4 @@ jobs:
       - run: Set-LocalUser -Name "runneradmin" -Password (ConvertTo-SecureString -AsPlainText "P@ssw0rd!" -Force)
       - run: Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled False
       - name: Start piping
-        run: ./piping.exe server -p 5900 aaa bbb
+        run: ./piping.exe server -p 5900 fkunn1326 fkunn1327
