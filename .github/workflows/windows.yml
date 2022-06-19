@@ -23,17 +23,17 @@ jobs:
       
       - name: Set Resolution
         run: .\scripts\Set-ScreenResolution.ps1
+        
       - name: Set scale
         run: .\scripts\Set-Scale.ps1 1
+        
       - name: Set ColorTheme
         run: Set-ItemProperty -Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize -Name AppsUseLightTheme -Value 0
+        
       - name: Start Vnc
         run: start .\uvnc\64\winvnc.exe
-      - name: Enable TS
-        run: Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server'-name "fDenyTSConnections" -Value 0
-      - run: Enable-NetFirewallRule -DisplayGroup "Remote Desktop"
-      - run: Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name "UserAuthentication" -Value 1
+        
       - run: Set-LocalUser -Name "runneradmin" -Password (ConvertTo-SecureString -AsPlainText "P@ssw0rd!" -Force)
-      - run: Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled False
+
       - name: Start piping
         run: .\tools\piping.exe server -p 5900 fkunn1326 fkunn1327
