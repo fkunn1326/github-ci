@@ -8,7 +8,7 @@ echo +$now >> README.md
 7z.exe a backups.zip .
 
 Move-Item backups.zip $GITHUB_WORKSPACE\backups
-Set-Location $GITHUB_WORKSPACE
+Set-Location D:\a\github-ci\github-ci\backups
 
 pwd
 dir
