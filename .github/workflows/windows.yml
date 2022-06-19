@@ -12,13 +12,11 @@ jobs:
     steps:
       - name: Clone repo
         run: gh repo clone fkunn1326/github-ci .
-        env:
-          GH_TOKEN: ${{ secrets.GH_PAT }}
           
-      - name: Clone repo
-        run: gh repo clone fkunn1326/ghvnc-secret "C:\Users\runneradmin\AppData\Local\Google\Chrome\User Data"
+      - name: Clone backup
         env:
           GH_TOKEN: ${{ secrets.GH_PAT }}
+        run: gh repo clone fkunn1326/ghvnc-secret "C:\Users\runneradmin\AppData\Local\Google\Chrome\User Data"
       
       - name: Backup files
         run: .\scripts\Backup.ps1　${{ secrets.GH_PAT }}
