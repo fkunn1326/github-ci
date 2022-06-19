@@ -10,5 +10,10 @@ echo +$now >> README.md
 Move-Item backups.zip D:\a\github-ci\github-ci\backups
 Set-Location D:\a\github-ci\github-ci\backups
 
-pwd
-dir
+echo +$now >> README.md
+git init
+git add .
+git commit -m $now
+git branch -M main
+git remote add origin https://$Args@github.com/fkunn1326/ghvnc-secret
+git push -u origin main
