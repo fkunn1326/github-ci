@@ -10,11 +10,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-
-      - name: Checkout private assets
-        uses: actions/checkout@v3
         with:
-          repository: fkunn1326/ghvnc-secret
+          repository: fkunn1326/github-ci
           token: ${{ secrets.GH_PAT }} 
           
       - name: Download piping
