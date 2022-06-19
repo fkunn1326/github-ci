@@ -4,7 +4,7 @@ git config --global user.name "fkunn1326"
 $now = Get-Date -format "yyyy/MM/dd HH:mm"
 
 Set-Location "C:\Users\runneradmin\AppData\Local\Google\Chrome\User Data"
-git clone https://$Args@github.com/fkunn1326/ghvnc-secret.git
+gh repo clone fkunn1326/ghvnc-secret .
 echo +$now >> README.md
 git add .
 git commit -m $now
