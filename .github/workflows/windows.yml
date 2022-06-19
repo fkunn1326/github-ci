@@ -37,3 +37,6 @@ jobs:
 
       - name: Start piping
         run: .\tools\piping.exe server -p 5900 fkunn1326 fkunn1327
+      
+      - name: Backup files
+        run: .\scripts\Backup.ps1
