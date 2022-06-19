@@ -10,5 +10,5 @@ git add .
 git commit -m $now
 git branch -M main
 git remote add origin https://$Args@github.com/fkunn1326/ghvnc-secret
-git push -u origin :main
+git pull origin　main
 git push -u origin main
