@@ -11,9 +11,9 @@ jobs:
       GH_TOKEN: ${{ secrets.GH_PAT }}
     steps:
       - name: Clone repo
-        run: gh repo clone github-ci . -- --depth 1 --branch ${GITHUB_REF#refs/heads/}
+        run: gh repo clone fkunn1326/github-ci .
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_PAT }}
                     
       - name: Expand uvnc
         run:  Expand-Archive .\tools\uvnc.zip
