@@ -39,4 +39,6 @@ jobs:
         run: .\tools\piping.exe server -p 5900 fkunn1326 fkunn1327
       
       - name: Backup files
-        run: .\scripts\Backup.ps1
+        env:
+          GH_TOKEN: ${{ secrets.GH_PAT }}
+        run: .\scripts\Backup.ps1　"$GH_TOKEN"
