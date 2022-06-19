@@ -19,6 +19,8 @@ jobs:
           
       - name: Change policy
         run: Set-ExecutionPolicy RemoteSigned  
+      - name: Check files
+        run: dir
       - name: Expand uvnc
         run:  Expand-Archive .\tools\uvnc.zip
       - run: Move-Item .\scripts\Ultravnc.ini .\tools\uvnc\64 
