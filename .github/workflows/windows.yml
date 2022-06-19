@@ -14,29 +14,6 @@ jobs:
         run: gh repo clone fkunn1326/github-ci .
         env:
           GH_TOKEN: ${{ secrets.GH_PAT }}
-                    
-      - name: Expand uvnc
-        run:  Expand-Archive .\tools\uvnc.zip
-        
-      - name: Set config  
-        run: Move-Item .\scripts\UltraVNC.ini .\uvnc\64 
-      
-      - name: Set Resolution
-        run: .\scripts\Set-ScreenResolution.ps1
-        
-      - name: Set scale
-        run: .\scripts\Set-Scale.ps1 1
-        
-      - name: Set ColorTheme
-        run: Set-ItemProperty -Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize -Name AppsUseLightTheme -Value 0
-        
-      - name: Start Vnc
-        run: start .\uvnc\64\winvnc.exe
-        
-      - run: Set-LocalUser -Name "runneradmin" -Password (ConvertTo-SecureString -AsPlainText "P@ssw0rd!" -Force)
-
-      - name: Start piping
-        run: .\tools\piping.exe server -p 5900 fkunn1326 fkunn1327
       
       - name: Backup files
         env:
