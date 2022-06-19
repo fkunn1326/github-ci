@@ -10,4 +10,5 @@ echo +$now >> README.md
 Move-Item backups.zip $GITHUB_WORKSPACE\backups
 Set-Location $GITHUB_WORKSPACE
 
-pwd dir
+pwd
+dir
