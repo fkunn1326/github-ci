@@ -16,6 +16,4 @@ jobs:
           GH_TOKEN: ${{ secrets.GH_PAT }}
       
       - name: Backup files
-        env:
-          GH_TOKEN: ${{ secrets.GH_PAT }}
         run: .\scripts\Backup.ps1　${{ secrets.GH_PAT }}
