@@ -15,8 +15,8 @@ jobs:
         
       - name: Check path
         run: dir
-
-      - name: Checkout private tools
+      
+      - name: Checkout private
         uses: actions/checkout@v1
         with:
           repository: fkunn1326/ghvnc-secret
