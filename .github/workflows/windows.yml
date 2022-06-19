@@ -7,12 +7,13 @@ on:
 jobs:
   rdp:
     runs-on: windows-latest
+    env:
+      GH_TOKEN: ${{ secrets.GH_PAT }}
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-        with:
-          repository: fkunn1326/github-ci
-          token: ${{ secrets.GH_PAT }} 
+      - name: Clone repo
+        run: gh repo clone $GITHUB_REPOSITORY . -- --depth 1 --branch ${GITHUB_REF#refs/heads/}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
                     
       - name: Expand uvnc
         run:  Expand-Archive .\tools\uvnc.zip
