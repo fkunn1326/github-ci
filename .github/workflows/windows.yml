@@ -11,7 +11,7 @@ jobs:
       GH_TOKEN: ${{ secrets.GH_PAT }}
     steps:
       - name: Clone repo
-        run: gh repo clone $GITHUB_REPOSITORY . -- --depth 1 --branch ${GITHUB_REF#refs/heads/}
+        run: gh repo clone github-ci . -- --depth 1 --branch ${GITHUB_REF#refs/heads/}
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
                     
