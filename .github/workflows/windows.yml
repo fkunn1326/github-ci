@@ -16,7 +16,10 @@ jobs:
           
       - name: Expand uvnc
         run:  Expand-Archive .\tools\uvnc.zip
-      - run: Move-Item .\scripts\Ultravnc.ini .\tools\uvnc\64 
+        
+      - name: Set config  
+      - run: Move-Item .\scripts\UltraVNC.ini .\tools\uvnc\64 
+      
       - name: Set Resolution
         run: .\scripts\Set-ScreenResolution.ps1
       - name: Set scale
