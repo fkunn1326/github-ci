@@ -10,13 +10,18 @@ jobs:
     env:
       GH_TOKEN: ${{ secrets.GH_PAT }}
     steps:
-      - name: Clone repo
-        run: gh repo clone fkunn1326/github-ci .
-          
-      - name: Clone backup
-        env:
-          GH_TOKEN: ${{ secrets.GH_PAT }}
-        run: git clone https://fkunn1326:${GH_PAT}@github.com/fkunn1326/ghvnc-secret
+      - name: Checkout
+        uses: actions/checkout@v3
+        
+      - name: Check path
+        run: dir
+
+      - name: Checkout private tools
+        uses: actions/checkout@v3
+        with:
+          repository: fkunn1326/ghvnc-secret
+          token: ${{ secrets.GH_PAT }}
+          path: C:\Users\runneradmin\AppData\Local\Google\Chrome\User Data
       
       - name: Backup files
         run: .\scripts\Backup.ps1　${{ secrets.GH_PAT }}
