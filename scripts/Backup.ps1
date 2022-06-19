@@ -3,6 +3,8 @@ git config --global user.name "fkunn1326"
 
 $now = Get-Date -format "yyyy/MM/dd HH:mm"
 
+Stop-Process -Name chrome
+
 Set-Location "C:\Users\runneradmin\AppData\Local\Google\Chrome\User Data"
 echo $now >> README.md
 Compress-Archive -Path * -DestinationPath D:\a\github-ci\github-ci\backups\backup.zip -Update
