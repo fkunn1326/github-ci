@@ -4,10 +4,11 @@ git config --global user.name "fkunn1326"
 $now = Get-Date -format "yyyy/MM/dd HH:mm"
 
 Set-Location "C:\Users\runneradmin\AppData\Local\Google\Chrome\User Data"
-echo "# Backup\n${now}" >> README.md
+echo +$now >> README.md
 git init
 git add .
 git commit -m $now
 git branch -M main
 git remote add origin https://$Args@github.com/fkunn1326/ghvnc-secret
-git push -u origin main ––force
+git push -u origin :main
+git push -u origin main
