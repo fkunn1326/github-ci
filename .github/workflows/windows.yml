@@ -16,7 +16,7 @@ jobs:
       - name: Clone backup
         env:
           GH_TOKEN: ${{ secrets.GH_PAT }}
-        run: gh repo clone fkunn1326/ghvnc-secret "C:\Users\runneradmin\AppData\Local\Google\Chrome\User Data"
+        run: git clone https://fkunn1326:${GH_PAT}@github.com/fkunn1326/ghvnc-secret
       
       - name: Backup files
         run: .\scripts\Backup.ps1　${{ secrets.GH_PAT }}
