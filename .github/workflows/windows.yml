@@ -13,8 +13,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         
-      - name: Check path
-        run: pwd
+      - name: Restore files
+        run: .\scripts\Restore.ps1
       
       - name: Checkout private tools
         uses: actions/checkout@v3
