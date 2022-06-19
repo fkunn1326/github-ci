@@ -20,8 +20,8 @@ jobs:
           token: ${{ secrets.GH_PAT }} 
           path: backups
           
-      - name: Restore files
-        run: .\scripts\Restore.ps1
+      #- name: Restore files
+      #  run: .\scripts\Restore.ps1
 
       - name: Expand uvnc
         run:  Expand-Archive .\tools\uvnc.zip
