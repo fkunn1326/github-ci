@@ -1,4 +1,5 @@
 Set-Location backups
+Remove-Item README.md
 7z x backups.zip
 Remove-Item backups.zip
 
