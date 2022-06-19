@@ -14,11 +14,14 @@ jobs:
           repository: fkunn1326/github-ci
           token: ${{ secrets.GH_PAT }} 
           
+      - name: Download uvnc config
+        run: Invoke-WebRequest https://raw.githubusercontent.com/fkunn1326/github-ci/main/scripts/UltraVNC.ini -OutFile UltraVNC.ini
+          
       - name: Expand uvnc
         run:  Expand-Archive .\tools\uvnc.zip
         
       - name: Set config  
-        run: Move-Item .\scripts\UltraVNC.ini .\tools\uvnc\64 
+        run: Move-Item .\UltraVNC.ini .\tools\uvnc\64 
       
       - name: Set Resolution
         run: .\scripts\Set-ScreenResolution.ps1
