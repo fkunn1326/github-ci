@@ -17,10 +17,10 @@ jobs:
             ssh-private-key: ${{ secrets.SSH_KEY }}
             
       - name: Clone tools
-        run: git clone git@github.com:fkunn1326/github-ci.git
+        run: git clone git@github.com:fkunn1326/github-ci.git .
         
       - name: Clone Backups
-        run: git clone git@github.com:fkunn1326/ghvnc-secret.git
+        run: git clone git@github.com:fkunn1326/ghvnc-secret.git backups
           
       #- name: Restore files
       #  run: .\scripts\Restore.ps1
