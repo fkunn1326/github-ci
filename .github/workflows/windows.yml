@@ -10,14 +10,14 @@ jobs:
     env:
       GH_TOKEN: ${{ secrets.GH_PAT }}
     steps:
-      - name: Setup SSH
-        uses: MrSquaare/ssh-setup-action@v1
-        with:
-            host: github.com
-            private-key: ${{ secrets.SSH_KEY }}
             
       - name: Checkout
         uses: actions/checkout@v3
+
+      - name: Setup SSH
+        uses: webfactory/ssh-agent@v0.5.4
+        with:
+            ssh-private-key: ${{ secrets.SSH_KEY }}
         
       - name: Clone Repo
         run: git clone git@github.com:fkunn1326/ghvnc-secret.git
