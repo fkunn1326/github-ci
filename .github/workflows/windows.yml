@@ -25,6 +25,9 @@ jobs:
         
       - name: Set config  
         run: Move-Item .\scripts\UltraVNC.ini .\uvnc\64 
+        
+      - name: Set TimeZone
+        run: Set-TimeZone -id "Tokyo Standard Time"
       
       - name: Set Resolution
         run: .\scripts\Set-ScreenResolution.ps1
