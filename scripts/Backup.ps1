@@ -3,7 +3,7 @@ git config --global user.name "fkunn1326"
 
 $now = Get-Date -format "yyyy/MM/dd HH:mm"
 
-Stop-Process -Name chrome
+chrome -ErrorAction SilentlyContinue | kill 
 
 Set-Location "C:\Users\runneradmin\AppData\Local\Google\Chrome\User Data"
 Compress-Archive -Path * -DestinationPath D:\a\github-ci\github-ci\backups\backup.zip -Update
