@@ -18,4 +18,4 @@ Set-Location D:\a\github-ci\github-ci\backups
 
 git add .
 git commit -m $now
-git push -u origin main
+git push -f origin main
