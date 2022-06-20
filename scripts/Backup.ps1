@@ -3,15 +3,12 @@ git config --global user.name "fkunn1326"
 
 $now = Get-Date -format "yyyy/MM/dd HH:mm"
 
-$chrome = Get-Process chrome -ErrorAction SilentlyContinue
-if ($chrome) {
-  $chrome.CloseMainWindow()
-  Sleep 5
-  if (!$chrome.HasExited) {
-    $chrome | Stop-Process -Force
-  }
+if((get-process "chrome" -ea SilentlyContinue) -eq $Null){ 
+        echo "Not Running" 
+}else{ 
+    echo "Running"
+    Stop-Process -processname "chrome"
 }
-Remove-Variable chrome
 
 Set-Location "C:\Users\runneradmin\AppData\Local\Google\Chrome\User Data"
 Compress-Archive -Path * -DestinationPath D:\a\github-ci\github-ci\backups\backup.zip -Update
