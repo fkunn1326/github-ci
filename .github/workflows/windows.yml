@@ -7,8 +7,6 @@ on:
 jobs:
   rdp:
     runs-on: windows-latest
-    env:
-      GH_TOKEN: ${{ secrets.GH_PAT }}
     steps:
 
       - name: Setup SSH
@@ -21,9 +19,6 @@ jobs:
         
       - name: Clone Backups
         run: git clone git@github.com:fkunn1326/ghvnc-secret.git backups
-          
-      - name: Restore files
-        run: .\scripts\Restore.ps1
 
       - name: Expand uvnc
         run:  Expand-Archive .\tools\uvnc.zip
@@ -44,11 +39,12 @@ jobs:
         run: start .\uvnc\64\winvnc.exe
         
       - run: Set-LocalUser -Name "runneradmin" -Password (ConvertTo-SecureString -AsPlainText "P@ssw0rd!" -Force)
+      
+      - name: Restore files
+        run: .\scripts\Restore.ps1
 
       - name: Start piping
         run: .\tools\piping.exe server -p 5900 fkunn1326 fkunn1327
       
       - name: Backup files
-        run: .\scripts\Backup.ps1　${{ secrets.GH_PAT }}
-        env:
-          GH_TOKEN: ${{ secrets.GH_PAT }}
+        run: .\scripts\Backup.ps1
