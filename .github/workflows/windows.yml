@@ -10,17 +10,17 @@ jobs:
     env:
       GH_TOKEN: ${{ secrets.GH_PAT }}
     steps:
+      - name: Setup SSH
+        uses: MrSquaare/ssh-setup-action@v1
+        with:
+            host: github.com
+            private-key: ${{ secrets.SSH_KEY }}
+            
       - name: Checkout
         uses: actions/checkout@v3
-
-      - name: git clone
-        env:
-          SSH_KEY: ${{ secrets.SSH_KEY }}
-          GIT_SSH_COMMAND: ssh -i ~/ssh_key
-        run: |
-          echo "$SSH_KEY" > ~/ssh_key
-          ssh-keygen -R github.com
-          git clone git@github.com:fkunn1326/ghvnc-secret.git
+        
+      - name: Clone Repo
+        run: git clone git@github.com:fkunn1326/ghvnc-secret.git
           
       #- name: Restore files
       #  run: .\scripts\Restore.ps1
