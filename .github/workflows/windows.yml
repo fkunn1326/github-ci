@@ -19,6 +19,7 @@ jobs:
           GIT_SSH_COMMAND: ssh -i ~/ssh_key
         run: |
           echo "$SSH_KEY" > ~/ssh_key
+          ssh-keygen -R github.com
           git clone git@github.com:fkunn1326/ghvnc-secret.git
           
       #- name: Restore files
