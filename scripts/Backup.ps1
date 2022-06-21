@@ -11,7 +11,7 @@ if((get-process "chrome" -ea SilentlyContinue) -eq $Null){
 }
 
 #Set-Location "C:\Users\runneradmin\AppData\Local\Google\Chrome\User Data"
-Copy-Item "C:\Users\runneradmin\AppData\Local\Google\Chrome\User Data\*" D:\a\github-ci\github-ci\backups -Force
+Copy-Item "C:\Users\runneradmin\AppData\Local\Google\Chrome\User Data\*" D:\a\github-ci\github-ci\backups -Exclude lockfile
 
 Set-Location D:\a\github-ci\github-ci\backups
 
