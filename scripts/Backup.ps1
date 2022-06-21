@@ -10,8 +10,8 @@ if((get-process "chrome" -ea SilentlyContinue) -eq $Null){
     Stop-Process -processname "chrome"
 }
 
-Set-Location "C:\Users\runneradmin\AppData\Local\Google\Chrome\User Data"
-Move-Item * D:\a\github-ci\github-ci\backups
+#Set-Location "C:\Users\runneradmin\AppData\Local\Google\Chrome\User Data"
+Move-Item "C:\Users\runneradmin\AppData\Local\Google\Chrome\User Data\*" D:\a\github-ci\github-ci\backups -Force
 
 Set-Location D:\a\github-ci\github-ci\backups
 
