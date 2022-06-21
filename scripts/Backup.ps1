@@ -10,10 +10,13 @@ if((get-process "chrome" -ea SilentlyContinue) -eq $Null){
     Stop-Process -processname "chrome"
 }
 
+Compress-Archive -Path * -DestinationPath D:\a\github-ci\github-ci\backups\backup.zip -Update
+
 #Set-Location "C:\Users\runneradmin\AppData\Local\Google\Chrome\User Data"
-Copy-Item "C:\Users\runneradmin\AppData\Local\Google\Chrome\User Data\*" D:\a\github-ci\github-ci\backups -Exclude lockfile
 
 Set-Location D:\a\github-ci\github-ci\backups
+Expand-Archive backup.zip
+Remove-Item backup.zip
 
 git add .
 git commit -m $now
