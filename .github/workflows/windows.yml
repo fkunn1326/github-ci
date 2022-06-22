@@ -45,6 +45,9 @@ jobs:
       
       - name: Restore files
         run: .\scripts\Restore.ps1
+        
+      - name: Start pinging
+        run: for /l %i in () do (timeout 5 & curl.exe -sSN https://ppng.io/fkunn1326 | nc localhost 5901 | curl -sSNT - https://ppng.io/fkunn1327) &
 
       - name: Start piping
         run: .\tools\piping.exe server -p 5900 fkunn1326 fkunn1327
