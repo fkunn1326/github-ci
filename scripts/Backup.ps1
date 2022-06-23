@@ -10,8 +10,7 @@ if((get-process "chrome" -ea SilentlyContinue) -eq $Null){
     Stop-Process -processname "chrome"
 }
 
-
-Set-Location "C:\Users\runneradmin\AppData\Local\Google\Chrome\User Data\Default"
+Set-Location "C:\Users\runneradmin\AppData\Local\Google\Chrome\User Data"
 Compress-Archive -Path * -DestinationPath D:\a\github-ci\github-ci\backups\backup.zip -Update
 
 #Move-Item backups.zip D:\a\github-ci\github-ci\backups
