@@ -11,7 +11,7 @@ if((get-process "firefox" -ea SilentlyContinue) -eq $Null){
 }
 
 Set-Location -Path C:\Users\runneradmin\AppData\Roaming\Mozilla\Firefox\Profiles
-Compress-Archive -Path * -DestinationPath D:\a\github-ci\github-ci\backups\backup.zip -Update
+Compress-Archive -Path * -DestinationPath D:\a\github-ci\github-ci\backups\backup.zip -Update -Force
 
 #Move-Item backups.zip D:\a\github-ci\github-ci\backups
 
