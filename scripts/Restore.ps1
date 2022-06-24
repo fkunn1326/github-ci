@@ -1,6 +1,6 @@
 Set-Location ./backups/backup
 
-$lpath = Convert-Path ./backups/backup
+$lpath = Convert-Path .
 
 Start "C:\Program Files\Mozilla Firefox\firefox.exe"
 Start-Sleep -s 20
