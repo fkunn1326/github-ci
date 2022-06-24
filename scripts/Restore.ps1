@@ -1,3 +1,3 @@
 Set-Location ./backups/backup
 
-Move-Item * "C:\Users\runneradmin\AppData\Local\Google\Chrome\User Data"
+Move-Item -Path C:\Users\runneradmin\AppData\Roaming\Mozilla\Firefox\Profiles\*.default
