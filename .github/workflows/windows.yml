@@ -2,7 +2,16 @@ name: rdp-windows
 
 on:
   workflow_dispatch:
-  push:
+    inputs:
+      Scale:
+        type: choice
+        description: Windowsの拡大率
+        options:
+        - 100%
+        - 125%
+        - 150%
+        - 175%
+        default: 125%
 
 jobs:
   rdp:
