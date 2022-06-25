@@ -6,6 +6,6 @@ Stop-Process -processname "firefox"
 
 dir C:\Users\runneradmin\AppData\Roaming\Mozilla\Firefox\Profiles\*.default-release
 
+$str_path = (Convert-Path C:\Users\runneradmin\AppData\Roaming\Mozilla\Firefox\Profiles\*.default-release)
 
-
-xcopy * C:\Users\runneradmin\AppData\Roaming\Mozilla\Firefox\Profiles\*.default-release\ /e /i
+xcopy * $str_path /e /i
