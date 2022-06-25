@@ -18,7 +18,7 @@ on:
         options:
         - Light theme
         - Dark theme
-        default: 125%
+        default: Dark theme
 
 jobs:
   rdp:
