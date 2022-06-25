@@ -10,7 +10,8 @@ if((get-process "firefox" -ea SilentlyContinue) -eq $Null){
     Stop-Process -processname "firefox"
 }
 
-Set-Location -Path C:\Users\runneradmin\AppData\Roaming\Mozilla\Firefox\Profiles\*.defalt-release
+$str_path = (Convert-Path C:\Users\runneradmin\AppData\Roaming\Mozilla\Firefox\Profiles\*.default-release)
+Set-Location $str_path
 #Compress-Archive -Path * -DestinationPath D:\a\github-ci\github-ci\backups\backup.zip -force
 
 #Move-Item backups.zip D:\a\github-ci\github-ci\backups
