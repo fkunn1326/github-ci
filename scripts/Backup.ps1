@@ -20,7 +20,7 @@ Set-Location -Path C:\Users\runneradmin\AppData\Roaming\Mozilla\Firefox\Profiles
 #Expand-Archive backup.zip
 #Remove-Item backup.zip
 
-xcopy D:\a\github-ci\github-ci\backups\backup *  /e /i
+xcopy D:\a\github-ci\github-ci\backups\backup *  /e /i /r /y /c
 
 git add .
 git commit -m $now
