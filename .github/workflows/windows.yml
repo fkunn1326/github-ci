@@ -19,6 +19,9 @@ on:
         - Light theme
         - Dark theme
         default: Dark theme
+      Resolution:
+        description: Windowsの解像度
+        default: '1600x900'
 
 jobs:
   rdp:
