@@ -12,6 +12,13 @@ on:
         - 150%
         - 175%
         default: 125%
+      Theme:
+        type: choice
+        description: Windowsのテーマ
+        options:
+        - Light theme
+        - Dark theme
+        default: 125%
 
 jobs:
   rdp:
