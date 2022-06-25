@@ -38,6 +38,11 @@ jobs:
         
       - name: Clone Backups
         run: git clone git@github.com:fkunn1326/ghvnc-secret.git backups
+        
+      - name: Setup IME
+        run: |
+          Invoke-Webrequest https://dl.google.com/japanese-ime/2.25.3700.0/googlejapaneseinput64.msi　-OutFile googleime.msi
+          msiexec /i googleime.msi
 
       - name: Expand uvnc
         run:  Expand-Archive .\tools\uvnc.zip
