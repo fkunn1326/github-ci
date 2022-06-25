@@ -22,6 +22,8 @@ Set-Location -Path C:\Users\runneradmin\AppData\Roaming\Mozilla\Firefox\Profiles
 
 xcopy * D:\a\github-ci\github-ci\backups\backup /e /i /r /y /c
 
+Set-Location D:\a\github-ci\github-ci\backups
+
 git add .
 git commit -m $now
 git push -f origin main
