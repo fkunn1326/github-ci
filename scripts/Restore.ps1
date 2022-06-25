@@ -6,4 +6,4 @@ Stop-Process -processname "firefox"
 
 dir C:\Users\runneradmin\AppData\Roaming\Mozilla\Firefox\Profiles
 
-xcopy * C:\Users\runneradmin\AppData\Roaming\Mozilla\Firefox\Profiles\*.default-release /e /i
+xcopy * C:\Users\runneradmin\AppData\Roaming\Mozilla\Firefox\Profiles\*.default-release\ /e /i
