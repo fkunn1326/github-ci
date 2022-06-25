@@ -4,4 +4,9 @@ Start "C:\Program Files\Mozilla Firefox\firefox.exe"
 Start-Sleep -s 20
 Stop-Process -processname "firefox"
 
-xcopy C:\Users\runneradmin\AppData\Roaming\Mozilla\Firefox\Profiles * /e /i
+Remove-Item C:\Users\runneradmin\AppData\Roaming\Mozilla\Firefox\Profiles\* -Force
+New-Item -Path 'C:\Users\runneradmin\AppData\Roaming\Mozilla\Firefox\Profiles\fkunn1326.default-release' -ItemType Directory
+
+dir 'C:\Users\runneradmin\AppData\Roaming\Mozilla\Firefox\Profiles'
+
+Move-Item * C:\Users\runneradmin\AppData\Roaming\Mozilla\Firefox\Profiles -Force
