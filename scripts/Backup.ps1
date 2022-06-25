@@ -10,8 +10,8 @@ if((get-process "firefox" -ea SilentlyContinue) -eq $Null){
     Stop-Process -processname "firefox"
 }
 
-Set-Location -Path C:\Users\runneradmin\AppData\Roaming\Mozilla\Firefox\Profiles
-Compress-Archive -Path * -DestinationPath D:\a\github-ci\github-ci\backups\backup.zip -CompressionLevel Fastest -Force
+Set-Location -Path C:\Users\runneradmin\AppData\Roaming\Mozilla\Firefox\Profiles\fkunn1326.default-release
+Compress-Archive -Path * -DestinationPath D:\a\github-ci\github-ci\backups\backup.zip -force
 
 #Move-Item backups.zip D:\a\github-ci\github-ci\backups
 
