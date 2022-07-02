@@ -2,26 +2,6 @@ name: rdp-windows
 
 on:
   workflow_dispatch:
-    inputs:
-      Scale:
-        type: choice
-        description: Windowsの拡大率
-        options:
-        - 100%
-        - 125%
-        - 150%
-        - 175%
-        default: 125%
-      Theme:
-        type: choice
-        description: Windowsのテーマ
-        options:
-        - Light theme
-        - Dark theme
-        default: Dark theme
-      Resolution:
-        description: Windowsの解像度
-        default: '1600x900'
 
 jobs:
   rdp:
@@ -71,7 +51,10 @@ jobs:
         run: .\scripts\Restore.ps1
         
       - name: Start piping
-        run: .\tools\piping.exe server -p 5900 fkunn1326 fkunn1327
+        run: .\tools\piping.exe server -p 5900 fkunn1326 fkunn1327 &
+        
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
       
       - name: Backup files
         run: .\scripts\Backup.ps1
