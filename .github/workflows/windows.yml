@@ -50,6 +50,9 @@ jobs:
       - name: Restore files
         run: .\scripts\Restore.ps1
         
+      - name: Start piping
+        run: .\tools\piping.exe server -p 5900 fkunn1326 fkunn1327 &
+        
       - name: Setup tmate session
         uses: mxschmitt/action-tmate@v3
       
