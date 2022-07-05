@@ -1,5 +1,6 @@
 while ($true){
-  Start "C:\Program Files\Mozilla Firefox\firefox.exe -url $($url)"
+  echo $url
+  "C:\Program Files\Mozilla Firefox\firefox.exe -url $url"
   Start-Sleep -s 20
   
   Stop-Process -processname "firefox"
