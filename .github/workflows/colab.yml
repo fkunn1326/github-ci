@@ -1,9 +1,12 @@
-
-
 name: Colab-continue
 
 on:
   workflow_dispatch:
+    inputs:
+      url:
+        type: string
+        required: true
+        description: 'Continue URL'
 
 jobs:
   rdp:
@@ -32,6 +35,11 @@ jobs:
       - name: Restore files
         run: .\scripts\Restore.ps1
                         
+      - name: Continue Session
+        run: .\scripts\Session.ps1
+        env:
+          url: ${{ github.event.inputs.url }}
+          
       - name: Setup tmate session
         uses: mxschmitt/action-tmate@v3
       
