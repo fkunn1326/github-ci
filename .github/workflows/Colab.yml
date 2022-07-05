@@ -1,0 +1,39 @@
+
+
+name: Colab-continue
+
+on:
+  workflow_dispatch:
+
+jobs:
+  rdp:
+    runs-on: windows-latest
+    steps:
+
+      - name: Setup SSH
+        uses: webfactory/ssh-agent@v0.5.4
+        with:
+            ssh-private-key: ${{ secrets.SSH_KEY }}
+        
+      - name: Clone Backups
+        run: git clone git@github.com:fkunn1326/ghvnc-secret.git backups
+
+      - name: Expand uvnc
+        run:  Expand-Archive .\tools\uvnc.zip
+        
+      - name: Set config  
+        run: Move-Item .\scripts\UltraVNC.ini .\uvnc\64 
+        
+      - name: Start Vnc
+        run: start .\uvnc\64\winvnc.exe
+        
+      - run: Set-LocalUser -Name "runneradmin" -Password (ConvertTo-SecureString -AsPlainText "P@ssw0rd!" -Force)
+      
+      - name: Restore files
+        run: .\scripts\Restore.ps1
+                        
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
+      
+      - name: Backup files
+        run: .\scripts\Backup.ps1
