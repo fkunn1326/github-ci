@@ -17,6 +17,9 @@ jobs:
         uses: webfactory/ssh-agent@v0.5.4
         with:
             ssh-private-key: ${{ secrets.SSH_KEY }}
+            
+      - name: Clone tools
+        run: git clone git@github.com:fkunn1326/github-ci.git .
         
       - name: Clone Backups
         run: git clone git@github.com:fkunn1326/ghvnc-secret.git backups
