@@ -23,7 +23,7 @@ jobs:
         
       - name: Continue Session
         run: |
-          echo ${{ github.event.inputs.message }}
+          echo "${{ github.event.inputs.message }}"
           .\scripts\Session.ps1 ${{ github.event.inputs.message }}
         env:
           url: ${{ github.event.inputs.url }}
