@@ -1,5 +1,5 @@
 while ($true){
-  echo &Arags
+  echo $Arags
   #"C:\Program Files\Mozilla Firefox\firefox.exe -url $Args"
   Start-Sleep -s 50
   
