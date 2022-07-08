@@ -1,3 +1,8 @@
-pip install selenium
-Invoke-Webrequest https://github.com/mozilla/geckodriver/releases/download/v0.30.0/geckodriver-v0.30.0-win64.zip -outfile geckdriver.zip
-Expand-Archive geckdriver.zip
+while ($true){
+  echo &Arags
+  #"C:\Program Files\Mozilla Firefox\firefox.exe -url $Args"
+  Start-Sleep -s 50
+  
+  #Stop-Process -processname "firefox"
+  Start-Sleep -s 1800
+}
