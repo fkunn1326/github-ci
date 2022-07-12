@@ -41,6 +41,9 @@ jobs:
         
       - name: Set ColorTheme
         run: Set-ItemProperty -Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize -Name AppsUseLightTheme -Value 0
+
+      - name: Set Wallpaper
+        run: set-itemproperty -path "HKCU:Control Panel\Desktop" -name WallPaper -value .\tools\wallpaper.jpg
         
       - name: Start Vnc
         run: start .\uvnc\64\winvnc.exe
