@@ -47,10 +47,7 @@ jobs:
         
       - name: Start Vnc
         run: start .\uvnc\64\winvnc.exe
-        
-      - name: Create RemoteApp
-        run: New-RDRemoteApp -CollectionName "RDPCollection" -DisplayName "ServerManager" -FilePath "C:\Windows\System32\ServerManager.exe" 
-      
+
       - run: Set-LocalUser -Name "runneradmin" -Password (ConvertTo-SecureString -AsPlainText "P@ssw0rd!" -Force)
               
       - name: Restore files
