@@ -48,12 +48,8 @@ jobs:
       - name: Start Vnc
         run: start .\uvnc\64\winvnc.exe
         
-      - name: Enable TS
-        run: Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server'-name "fDenyTSConnections" -Value 0
-        
-      - run: Enable-NetFirewallRule -DisplayGroup "Remote Desktop"
-      
-      - run: Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name "UserAuthentication" -Value 1
+      - name: Create RemoteApp
+        run: New-RDRemoteApp -CollectionName "RDPCollection" -DisplayName "ServerManager" -FilePath "C:\Windows\System32\ServerManager.exe" 
       
       - run: Set-LocalUser -Name "runneradmin" -Password (ConvertTo-SecureString -AsPlainText "P@ssw0rd!" -Force)
               
