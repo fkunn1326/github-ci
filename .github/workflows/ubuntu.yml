@@ -1,6 +1,7 @@
 name: vnc-Linux
 
 on:
+  push:
   workflow_dispatch:
 
 jobs:
@@ -10,9 +11,12 @@ jobs:
     - uses: actions/checkout@v2
     - name: Preparing environment...
       env:
-        VNC_USER_PASSWORD: fkd13628
+        VNC_USER_PASSWORD: ${{ secrets.VNC_USER_PASSWORD }}
       run: sh ./scripts/linux_configure.sh
     - name: Starting VNC Server...
-      run: export PATH=$PATH:/opt/TurboVNC/bin && cd $HOME && vncserver :1 -geometry 1518x853 -depth 16 -rfbport 7582
-    - name: Creating tunnel with ngrok...
-      run: socat 'EXEC:curl -NsS http\://ppng.io/xxx!!EXEC:curl -NsST - http\://ppng.io/yyy' TCP:127.0.0.1:5900
+      env:
+        VNC_SCREENSIZE: 1518x853
+        VNC_DEPTHVALUE: 16
+      run: export PATH=$PATH:/opt/TurboVNC/bin && cd $HOME && vncserver :1 -geometry $VNC_SCREENSIZE -depth $VNC_DEPTHVALUE -rfbport 7582
+    - name: Setup tmate session
+      uses: mxschmitt/action-tmate@v3
