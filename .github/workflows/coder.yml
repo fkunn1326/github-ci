@@ -1,0 +1,12 @@
+name: Coder
+on: push
+
+jobs:
+  coder:
+    runs-on: ubuntu-latest
+    container:
+      image: codercom/code-server
+    steps:
+      - name: Log os info
+        run: |
+          cat /etc/os-release
