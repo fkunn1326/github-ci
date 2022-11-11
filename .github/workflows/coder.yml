@@ -10,4 +10,4 @@ jobs:
       - name: Run code-server
         run: |
           sudo wget -q https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb && dpkg -i cloudflared-linux-amd64.deb
-          sudo code-server --port=8080 --link
+          sudo code-server --link
