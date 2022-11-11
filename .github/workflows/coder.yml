@@ -9,4 +9,4 @@ jobs:
     steps:
       - name: Run code-server
         run: |
-          code-server
+          sudo code-server
