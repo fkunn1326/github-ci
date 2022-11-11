@@ -5,8 +5,8 @@ jobs:
   coder:
     runs-on: ubuntu-latest
     container:
-      image: codercom/code-server
+      image: codercom/code-server:latest
     steps:
-      - name: Log os info
+      - name: Run code-server
         run: |
-          cat /etc/os-release
+          code-server
