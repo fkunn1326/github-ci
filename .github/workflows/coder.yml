@@ -23,6 +23,10 @@ jobs:
           cat <<EOL >> ./af573896-2e34-45cd-9037-1bbb9138bd27.json
           ${{secrets.CF_CFG}}
           EOL
+
+          cat <<EOL >> ./code-server.yaml
+          ${{secrets.CODE_SECRET}}
+          EOL
           
           code-server --version
-          code-server & cloudflared tunnel --origincert=./cert.pem --config=./config.yml run coder
+          code-server --config=./code-server.yaml & cloudflared tunnel --origincert=./cert.pem --config=./config.yml run coder
