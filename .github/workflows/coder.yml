@@ -24,5 +24,7 @@ jobs:
           ${{secrets.CF_CFG}}
           EOL
           
-          code-server --port=8080 &
+          code-server --version
+          code-server
+          
           cloudflared tunnel --origincert=./cert.pem --config=./config.yml run coder
