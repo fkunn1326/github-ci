@@ -12,6 +12,7 @@ jobs:
           sudo curl -OL https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb
           sudo dpkg -i cloudflared-linux-amd64.deb
           sudo mkdir /etc/cloudflared/
+          sudo touch /etc/cloudflared/cert.pem
           sudo cat <<EOL >> /etc/cloudflared/cert.pem
           ${{secrets.CF_CERT}}
           EOL
