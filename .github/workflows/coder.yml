@@ -11,6 +11,5 @@ jobs:
         run: |
           sudo curl -OL https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb
           sudo dpkg -i cloudflared-linux-amd64.deb
-          sudo echo -e ${{secrets.CF_CERT}} > ~/.cloudflared/cert.pem
-          cloudflared tunnel create coder
+          cloudflared help
           sudo code-server
