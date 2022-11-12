@@ -8,7 +8,6 @@ jobs:
       - name: Run code-server
         run: |
           curl -fsSL https://code-server.dev/install.sh | sh
-          curl -fsSL https://code-server.dev/install.sh | sh
           curl -OL https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb
           sudo dpkg -i cloudflared-linux-amd64.deb
           touch ./cert.pem
@@ -25,8 +24,6 @@ jobs:
           ${{secrets.CF_CFG}}
           EOL
           
-          ls -la
-          code-server --version
-          code-server
+          code-server &
           
           cloudflared tunnel --origincert=./cert.pem --config=./config.yml run coder
