@@ -7,6 +7,8 @@ jobs:
     container:
       image: codercom/code-server:latest
     steps:
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
       - name: Run code-server
         run: |
           ls -al
