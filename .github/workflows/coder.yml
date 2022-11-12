@@ -14,5 +14,5 @@ jobs:
           cat <<EOL >> ./cert.pem
           ${{secrets.CF_CERT}}
           EOL
-          cloudflared tunnel list
+          cloudflared tunnel --origincert=./cert.pem list
           sudo code-server
