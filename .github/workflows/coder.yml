@@ -24,6 +24,7 @@ jobs:
           ${{secrets.CF_CFG}}
           EOL
           
+          ls -la
           code-server --version
           code-server
           
