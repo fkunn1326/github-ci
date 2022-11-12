@@ -25,6 +25,4 @@ jobs:
           EOL
           
           code-server --version
-          code-server & && disown
-          
-          cloudflared tunnel --origincert=./cert.pem --config=./config.yml run coder
+          code-server & cloudflared tunnel --origincert=./cert.pem --config=./config.yml run coder
