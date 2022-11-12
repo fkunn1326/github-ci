@@ -7,7 +7,8 @@ jobs:
     steps:
       - name: Run code-server
         run: |
-          curl -fsSL https://code-server.dev/install.sh | sh -s -- --dry-run
+          curl -fsSL https://code-server.dev/install.sh | sh
+          curl -fsSL https://code-server.dev/install.sh | sh
           curl -OL https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb
           sudo dpkg -i cloudflared-linux-amd64.deb
           touch ./cert.pem
