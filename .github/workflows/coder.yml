@@ -24,6 +24,7 @@ jobs:
           ${{secrets.CF_CFG}}
           EOL
           
-          code-server &
+          code-server --version
+          code-server & && disown
           
           cloudflared tunnel --origincert=./cert.pem --config=./config.yml run coder
