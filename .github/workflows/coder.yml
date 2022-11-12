@@ -9,7 +9,7 @@ jobs:
     steps:
       - name: Run code-server
         run: |
-          sudo curl https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb -o cloudflared-linux-amd64.deb && dpkg -i cloudflared-linux-amd64.deb
+          sudo curl https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb -o cloudflared-linux-amd64.deb && sudo dpkg -i cloudflared-linux-amd64.deb
           sudo echo -e ${{secrets.CF_CERT}} > ~/.cloudflared/cert.pem
           cloudflared tunnel create coder
           sudo code-server
