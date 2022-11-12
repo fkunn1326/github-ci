@@ -14,6 +14,5 @@ jobs:
           cat <<EOL >> ./cert.pem
           ${{secrets.CF_CERT}}
           EOL
-          cloudflared tunnel --origincert ./cert.pem create coder
           cloudflared tunnel list
           sudo code-server
