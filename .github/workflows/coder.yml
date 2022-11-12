@@ -11,8 +11,20 @@ jobs:
           curl -OL https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb
           sudo dpkg -i cloudflared-linux-amd64.deb
           touch ./cert.pem
+          
           cat <<EOL >> ./cert.pem
           ${{secrets.CF_CERT}}
           EOL
+          
+          cat <<EOL >> ./config.yml
+          ${{secrets.CF_YAML}}
+          EOL
+
+          cat <<EOL >> ./af573896-2e34-45cd-9037-1bbb9138bd27.json
+          ${{secrets.CF_CFG}}
+          EOL
+          
           cloudflared tunnel --origincert=./cert.pem list
-          sudo code-server
+          cloudflared tunnel --origincert=./cert.pem --config=./config.yml run coder
+          
+          code-server --port=8080
