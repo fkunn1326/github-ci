@@ -19,3 +19,4 @@ jobs:
           cloudflared tunnel --origincert cert.pem create coder
           cloudflared tunnel list
           sudo code-server
+        working-directory: /home
