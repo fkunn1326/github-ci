@@ -10,7 +10,7 @@ jobs:
       - name: Run code-server
         run: |
           sudo curl -OL https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb
-          sudo dpkg -i cloudflared-linux-amd64.
+          sudo dpkg -i cloudflared-linux-amd64.deb
           mkdir /etc/cloudflared/
           sudo cat <<EOL >> /etc/cloudflared/cert.pem
           ${{secrets.CF_CERT}}
