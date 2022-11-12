@@ -4,18 +4,16 @@ on: push
 jobs:
   coder:
     runs-on: ubuntu-latest
-    container:
-      image: codercom/code-server:latest
     steps:
       - name: Run code-server
         run: |
-          sudo curl -OL https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb
+          curl -fsSL https://code-server.dev/install.sh | sh -s -- --dry-run
+          curl -OL https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb
           sudo dpkg -i cloudflared-linux-amd64.deb
-          pwd
-          sudo touch /tmp/cert.pem
-          sudo cat <<EOL >> /tmp/cert.pem
+          touch ./cert.pem
+          cat <<EOL >> ./cert.pem
           ${{secrets.CF_CERT}}
           EOL
-          cloudflared tunnel --origincert /tmp/cert.pem create coder
+          cloudflared tunnel --origincert ./cert.pem create coder
           cloudflared tunnel list
           sudo code-server
