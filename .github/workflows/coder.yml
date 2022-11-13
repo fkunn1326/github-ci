@@ -12,13 +12,24 @@ jobs:
             
       - name: Prepare Backup
         run: |
-          mkdir -p ~/workspaces/aipic
+          mkdir -p ~/workspaces/ai-arts
           mkdir -p ~/.local/share/code-server
             
-      - name: Clone Backups
+      - name: Download Backups
         run: |
-          git clone ${{secrets.WORK_REPO}} ~/workspaces/ai-arts
+          curl -OL https://github.com/fkunn1326/github-ci/releases/download/coder/cache.zip
+          curl -OL https://github.com/fkunn1326/github-ci/releases/download/coder/source.zip
+        
+      - name: Expand Backups
+        run: |
+          unzip -P ${{secrets.ZIP_PASSWORD}} cache.zip -d ~/.local/share/code-server
+          unzip -P ${{secrets.ZIP_PASSWORD}} source.zip -d ~/workspaces/ai-arts
           
+      - name: Delete Backups
+        run: |
+          rm -rf cache.zip
+          rm -rf source.zip
+        
       - run: ls
 
       - name: Run code-server
