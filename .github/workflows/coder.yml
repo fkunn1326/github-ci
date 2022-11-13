@@ -18,11 +18,6 @@ jobs:
       - name: Clone Backups
         run: |
           git clone ${{secrets.WORK_REPO}} ~/workspaces/ai-arts
-
-      - name: Download Backups cache
-        uses: actions/download-artifact@v3
-        with:
-          name: cache
           
       - run: ls
 
@@ -69,4 +64,5 @@ jobs:
           files: |
             source.zip
             cache.zip
+          tag_name: coder
           
