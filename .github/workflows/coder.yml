@@ -15,10 +15,9 @@ jobs:
           mkdir -p ~/workspaces/aipic
           mkdir -p ~/.local/share/code-server
             
-      - name: Download Backups source
-        uses: actions/download-artifact@v3
-        with:
-          name: source
+      - name: Clone Backups
+        run: |
+          git clone ${{secrets.WORK_REPO}} ~/workspaces/ai-arts
 
       - name: Download Backups cache
         uses: actions/download-artifact@v3
@@ -65,15 +64,9 @@ jobs:
           
       - name: Upload Artifact
         if: failure()
-        uses: actions/upload-artifact@v3
+        uses: softprops/action-gh-release@v1
         with:
-          name: source
-          path: source.zip
-          
-      - name: Upload Cache
-        if: failure()
-        uses: actions/upload-artifact@v3
-        with:
-          name: cache
-          path: cache.zip
+          files: |
+            source.zip
+            cache.zip
           
