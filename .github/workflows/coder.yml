@@ -44,15 +44,4 @@ jobs:
           
           code-server --version
           code-server --config=./code-server.yaml ~/workspaces/ai-arts & cloudflared tunnel --origincert=./cert.pem --config=./config.yml run coder
-
-      - name: Upload Artifact
-        if: failure()
-        run: zip -e --password=${{secrets.ZIP_PASSWORD}} source.zip ~/workspaces/ai-arts
-          
-      - name: Upload Artifact
-      - uses: actions/upload-artifact@v3
-        if: failure()
-        with:
-          name: source
-          path: source.zip
           
