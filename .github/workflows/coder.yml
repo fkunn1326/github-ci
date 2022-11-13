@@ -10,16 +10,17 @@ jobs:
         with:
             ssh-private-key: ${{ secrets.SSH_KEY }}
             
-      - name: Prepare for cache
+      - name: Prepare
         run: |
           mkdir -p ~/workspaces/aipic
+          mkdir -p ~/.local/share/code-server
             
       - name: Clone Backups
         run: |
           git clone ${{secrets.WORK_REPO}} ~/workspaces/ai-arts
         
       - name: Run code-server
-        timeout-minutes: 300
+        timeout-minutes: 3
         run: |
           curl -fsSL https://code-server.dev/install.sh | sh
           curl -OL https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb
@@ -45,9 +46,11 @@ jobs:
           code-server --version
           code-server --config=./code-server.yaml ~/workspaces/ai-arts & cloudflared tunnel --origincert=./cert.pem --config=./config.yml run coder
 
-      - name: Upload Artifact
+      - name: Compress Artifact
         if: failure()
-        run: zip -e --password=${{secrets.ZIP_PASSWORD}} source.zip ~/workspaces/ai-arts
+        run: |
+          zip -e --password=${{secrets.ZIP_PASSWORD}} source.zip ~/workspaces/ai-arts
+          zip -e --password=${{secrets.ZIP_PASSWORD}} cache.zip ~/.local/share/code-server
           
       - name: Upload Artifact
         if: failure()
@@ -55,4 +58,11 @@ jobs:
         with:
           name: source
           path: source.zip
+          
+      - name: Upload Cache
+        if: failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: cache
+          path: cache.zip
           
