@@ -10,15 +10,23 @@ jobs:
         with:
             ssh-private-key: ${{ secrets.SSH_KEY }}
             
-      - name: Prepare
+      - name: Prepare Backup
         run: |
           mkdir -p ~/workspaces/aipic
           mkdir -p ~/.local/share/code-server
             
-      - name: Clone Backups
-        run: |
-          git clone ${{secrets.WORK_REPO}} ~/workspaces/ai-arts
-        
+      - name: Download Backups source
+        uses: actions/download-artifact@v3
+        with:
+          name: source
+
+      - name: Download Backups cache
+        uses: actions/download-artifact@v3
+        with:
+          name: cache
+          
+      - run: ls
+
       - name: Run code-server
         timeout-minutes: 1
         run: |
