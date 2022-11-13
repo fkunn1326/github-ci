@@ -20,7 +20,7 @@ jobs:
           git clone ${{secrets.WORK_REPO}} ~/workspaces/ai-arts
         
       - name: Run code-server
-        timeout-minutes: 3
+        timeout-minutes: 1
         run: |
           curl -fsSL https://code-server.dev/install.sh | sh
           curl -OL https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb
@@ -44,13 +44,16 @@ jobs:
           EOL
           
           code-server --version
-          code-server --config=./code-server.yaml ~/workspaces/ai-arts & cloudflared tunnel --origincert=./cert.pem --config=./config.yml run coder
+          code-server --config=./code-server.yaml ~/workspaces/ai-arts & cloudflared tunnel --origincert=./cert.pem --config=./config.yml --loglevel=panic run coder
 
       - name: Compress Artifact
         if: failure()
         run: |
-          zip -e --password=${{secrets.ZIP_PASSWORD}} source.zip ~/workspaces/ai-arts
-          zip -e --password=${{secrets.ZIP_PASSWORD}} cache.zip ~/.local/share/code-server
+          cd ~/workspaces/ai-arts
+          zip -er --password=${{secrets.ZIP_PASSWORD}} ${GITHUB_WORKSPACE}/source.zip * .[^.]*
+          cd ~/.local/share/code-server
+          zip -er --password=${{secrets.ZIP_PASSWORD}} ${GITHUB_WORKSPACE}/cache.zip * .[^.]*
+          cd ${GITHUB_WORKSPACE}
           
       - name: Upload Artifact
         if: failure()
