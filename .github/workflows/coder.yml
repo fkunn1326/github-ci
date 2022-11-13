@@ -1,5 +1,6 @@
 name: Coder
-on: push
+on:
+  workflow_dispatch:
 
 jobs:
   coder:
