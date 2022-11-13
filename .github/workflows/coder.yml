@@ -33,7 +33,7 @@ jobs:
       - run: ls
 
       - name: Run code-server
-        timeout-minutes: 1
+        timeout-minutes: 300
         run: |
           curl -fsSL https://code-server.dev/install.sh | sh
           curl -OL https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb
