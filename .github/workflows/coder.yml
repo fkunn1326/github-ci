@@ -67,6 +67,7 @@ jobs:
         run: |
           cd ~/workspaces/ai-arts
           zip -er --password=${{secrets.ZIP_PASSWORD}} ${GITHUB_WORKSPACE}/source.zip * .[^.]*
+          rm -rf node_modules && yarn
           cd ~/.local/share/code-server
           zip -er --password=${{secrets.ZIP_PASSWORD}} ${GITHUB_WORKSPACE}/cache.zip * .[^.]*
           cd ${GITHUB_WORKSPACE}
