@@ -81,3 +81,10 @@ jobs:
             cache.zip
           tag_name: coder
           
+      - uses: actions/upload-artifact@v3
+        if: failure()
+        with:
+          name: Upload Artifact
+          path: |
+            source.zip
+            cache.zip
